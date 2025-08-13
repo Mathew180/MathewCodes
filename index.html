@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="styleSheet" href="style.css">
 
 </head>
@@ -111,32 +112,32 @@
                 </div>
             </div>
             
-            <div class="tech-stack fade-in">
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <span class="tech-icon">⚛️</span>
+            <div class="tech-stack fade-in" aria-label="Technology stack">
+                <div class="tech-grid" role="list">
+                    <button class="tech-item" role="listitem" aria-label="React" tabindex="0">
+                        <i class="devicon-react-original"></i>
                         <span class="tech-name">React</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-icon">🟢</span>
+                    </button>
+                    <button class="tech-item" role="listitem" aria-label="Node.js" tabindex="0">
+                        <i class="devicon-nodejs-plain"></i>
                         <span class="tech-name">Node.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-icon">🐍</span>
+                    </button>
+                    <button class="tech-item" role="listitem" aria-label="Python" tabindex="0">
+                        <i class="devicon-python-plain"></i>
                         <span class="tech-name">Python</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-icon">☁️</span>
+                    </button>
+                    <button class="tech-item" role="listitem" aria-label="Amazon Web Services" tabindex="0">
+                        <i class="devicon-amazonwebservices-plain"></i>
                         <span class="tech-name">AWS</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-icon">🗄️</span>
+                    </button>
+                    <button class="tech-item" role="listitem" aria-label="PostgreSQL" tabindex="0">
+                        <i class="devicon-postgresql-plain"></i>
                         <span class="tech-name">PostgreSQL</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-icon">🔷</span>
+                    </button>
+                    <button class="tech-item" role="listitem" aria-label="TypeScript" tabindex="0">
+                        <i class="devicon-typescript-plain"></i>
                         <span class="tech-name">TypeScript</span>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1161,6 +1162,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('🚀 Portfolio initialized successfully!');
         });
+
+        // Move radial accent following cursor for tech items
+        document.addEventListener('mousemove', (event) => {
+            const target = event.target.closest('.tech-item');
+            if (!target) return;
+            const rect = target.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            target.style.setProperty('--mx', x + 'px');
+            target.style.setProperty('--my', y + 'px');
+        }, { passive: true });
 
     </script>
 </body>
