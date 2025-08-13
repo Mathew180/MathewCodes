@@ -581,9 +581,9 @@
 
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             gap: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -591,29 +591,69 @@
             background: var(--color-bg-secondary);
             border: 1px solid var(--color-border);
             border-radius: var(--radius);
-            padding: 20px;
-            transition: all 0.3s ease;
+            padding: 22px 18px;
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
             cursor: default;
+            outline: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .tech-item:hover {
-            background: var(--color-primary);
-            color: white;
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .tech-icon {
+        .tech-item i {
             font-size: 32px;
-            margin-bottom: 8px;
             display: block;
+            margin-bottom: 8px;
+            /* Monochrome by default for a professional look */
+            filter: grayscale(1) brightness(0.8);
+            opacity: 0.9;
+            transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
+        }
+
+        /* Subtle shimmer accent on hover/focus */
+        .tech-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(120px 120px at var(--mx, 50%) var(--my, 50%), rgba(99,102,241,0.12), transparent 60%);
+            opacity: 0;
+            transition: opacity 220ms ease;
+        }
+
+        .tech-item:hover::after,
+        .tech-item:focus-visible::after {
+            opacity: 1;
+        }
+
+        .tech-item:hover,
+        .tech-item:focus-visible {
+            border-color: rgba(99, 102, 241, 0.45);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.16), 0 0 0 4px rgba(99,102,241,0.12);
+            transform: translateY(-3px);
+        }
+
+        .tech-item:hover i,
+        .tech-item:focus-visible i {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+            transform: translateY(-1px);
         }
 
         .tech-name {
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            color: var(--color-text);
+            opacity: 0.9;
+        }
+
+        /* Reduced motion respect */
+        @media (prefers-reduced-motion: reduce) {
+            .tech-item,
+            .tech-item i {
+                transition: none;
+            }
         }
 
         /* Enhanced Experience Section */
