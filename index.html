@@ -113,31 +113,45 @@
             </div>
             
             <div class="tech-stack fade-in" aria-label="Technology stack">
-                <div class="tech-grid" role="list">
-                    <button class="tech-item" role="listitem" aria-label="React" tabindex="0">
-                        <i class="devicon-react-original"></i>
-                        <span class="tech-name">React</span>
-                    </button>
-                    <button class="tech-item" role="listitem" aria-label="Node.js" tabindex="0">
-                        <i class="devicon-nodejs-plain"></i>
-                        <span class="tech-name">Node.js</span>
-                    </button>
-                    <button class="tech-item" role="listitem" aria-label="Python" tabindex="0">
-                        <i class="devicon-python-plain"></i>
-                        <span class="tech-name">Python</span>
-                    </button>
-                    <button class="tech-item" role="listitem" aria-label="Amazon Web Services" tabindex="0">
-                        <i class="devicon-amazonwebservices-plain"></i>
-                        <span class="tech-name">AWS</span>
-                    </button>
-                    <button class="tech-item" role="listitem" aria-label="PostgreSQL" tabindex="0">
-                        <i class="devicon-postgresql-plain"></i>
-                        <span class="tech-name">PostgreSQL</span>
-                    </button>
-                    <button class="tech-item" role="listitem" aria-label="TypeScript" tabindex="0">
-                        <i class="devicon-typescript-plain"></i>
-                        <span class="tech-name">TypeScript</span>
-                    </button>
+                <div class="tech-carousel swiper" aria-label="Technology logos carousel">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="React" tabindex="0">
+                                <i class="devicon-react-original"></i>
+                                <span class="tech-name">React</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="Node.js" tabindex="0">
+                                <i class="devicon-nodejs-plain"></i>
+                                <span class="tech-name">Node.js</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="Python" tabindex="0">
+                                <i class="devicon-python-plain"></i>
+                                <span class="tech-name">Python</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="Amazon Web Services" tabindex="0">
+                                <i class="devicon-amazonwebservices-plain"></i>
+                                <span class="tech-name">AWS</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="PostgreSQL" tabindex="0">
+                                <i class="devicon-postgresql-plain"></i>
+                                <span class="tech-name">PostgreSQL</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="tech-item" aria-label="TypeScript" tabindex="0">
+                                <i class="devicon-typescript-plain"></i>
+                                <span class="tech-name">TypeScript</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1161,6 +1175,30 @@
         // Initialize everything after DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             console.log('🚀 Portfolio initialized successfully!');
+
+            // Tech logos carousel
+            const techSwiper = new Swiper('.tech-carousel', {
+                slidesPerView: 'auto',
+                spaceBetween: 16,
+                speed: 4000,
+                loop: true,
+                allowTouchMove: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                freeMode: {
+                    enabled: true,
+                    momentum: false,
+                    sticky: false
+                },
+                breakpoints: {
+                    480: { spaceBetween: 14 },
+                    768: { spaceBetween: 16 },
+                    1024: { spaceBetween: 18 }
+                }
+            });
         });
 
         // Move radial accent following cursor for tech items

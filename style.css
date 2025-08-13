@@ -1722,3 +1722,59 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+/* Tech Carousel */
+.tech-carousel {
+    position: relative;
+    padding: 10px 0;
+    --edge-fade: linear-gradient(90deg, var(--color-bg) 0%, rgba(15,23,42,0) 20%, rgba(15,23,42,0) 80%, var(--color-bg) 100%);
+}
+
+.tech-carousel::before,
+.tech-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.tech-carousel::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-bg), transparent);
+}
+
+.tech-carousel::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-bg), transparent);
+}
+
+.tech-carousel .swiper-wrapper {
+    align-items: stretch;
+    transition-timing-function: linear !important;
+    -webkit-transition-timing-function: linear !important;
+}
+
+.tech-carousel .swiper-slide {
+    width: auto;
+}
+
+.tech-carousel .tech-item {
+    width: 160px;
+}
+
+@media (max-width: 768px) {
+    .tech-carousel .tech-item { width: 140px; }
+}
+
+@media (max-width: 480px) {
+    .tech-carousel .tech-item { width: 120px; }
+}
+
+/* Carousel: refine tech item hover without changing container bg */
+.tech-carousel .tech-item:hover,
+.tech-carousel .tech-item:focus-visible {
+    background: var(--color-bg-secondary);
+}
